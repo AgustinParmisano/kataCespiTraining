@@ -1,0 +1,98 @@
+
+Kata: Cespi Fighters
+
+EL objetivo del siguiente kata es implementar un sistema de batallas por turnos.
+Herramientas a utilizar:
+
+    Ruby puro (para el diseño del modelo)
+    Rails (haciendo uso a gusto del toolbox)
+
+Enunciado
+
+Se detallan a continuación las entidades y el funcionamiento básico del sistema.
+Fighter
+
+Representa un luchador. Tiene:
+
+    Nombre
+    Un conjunto de habilidades
+    Puntos de vida
+    Puntos
+    Experiencia
+
+Abilities
+
+Las habilidades representan una capacidad del luchador. Tienen un nombre y
+pertenecen a un tipo:
+
+    Golpe de mano (por ejemplo, "piquete de ojos")
+    Golpe de Pie (por ejemplo "patada a la rodilla")
+    Arma (por ejemplo, "tramontina en las tripas")
+    Especial (por ejemplo "bola en la ingle")
+
+Pueden ser:
+
+    Habilidades de ataque
+    Habilidades de defensa
+
+Un luchador posee 3 habilidades de ataque y 3 habilidades de defensa. puede
+elegir alguna que exista o crear las propias.
+Puntos de vida
+
+Los puntos de vida representan la resistencia del luchador. Al momento de crear
+el luchador, no pueden ser menos de 2. (es decir todo luchador arranca con al
+menos 2 puntos de vida)
+Puntos
+
+Para cada habilidad elegida para su luchador, el jugador decide cuantos puntos
+asignarle.
+
+Cada habilidad del luchador debe tener al menos 1 punto asignado. Al momento
+de la creación del personaje, el jugador dispone de 13 puntos para repartir
+entre vida y habilidades.
+
+(teniendo en cuenta los puntos obligatorios, tenemos: 2 puntos de vida +
+6 de habilidades (3 de defensa, 3 de ataque) ==> restan 5 puntospor repartir.
+Peleas
+
+    Cada enfrentamiento se realiza entre 2 luchadores
+    Cada luchador construye una estrategia de ataque y otra de defensa.
+    Cada estrategia consta de 5 rounds
+    En cada round, se utiliza una habilidad
+    Si la diferencia de nivel entre los luchadores es mayor a 1, comienza atacando el luchador de menor nivel sino se decide aleatoriamente cual de los 2 comienza.
+
+Resultados
+
+El resultado de una pelea se calcula de la siguiente manera:
+
+    En cada round se contraponen la habilidad de ataque seleccionada del atacante, contra la de habilidad de defensa del defensor.
+    Si ataque y defensa son del mismo tipo, entonces decimos que la defensa ha sido efectiva, por lo tanto, los puntos asignados a la habilidad de defensa, se restan de los puntos de ataque. El resultado de la resta es el impacto final sobre los puntos de vida del luchador defensor.
+    Este cálculo se realiza por cada round, para cada jugador.
+
+Un luchador gana la batalla si:
+
+    en cualquier round, el otro luchador queda con 0 puntos de vida, o
+    al finalizar los 5 rounds, el luchador tiene más puntos de vida
+
+Si al finalizar los 5 rounds, los puntos de vida son iguales, entonces es un
+empate.
+
+El luchador ganador recibe 150 puntos de experiencia.
+El perdedor 50.
+
+Si el nivel del ganador es menor que el del perderdor, por cada nivel de
+diferencia el ganador recibe 100 puntos de experiencia extra
+Si el nivel del perderdor es menor que el del ganandor, el ganandor recibe -100
+puntos de expriencia por cada nivel de diferencia.
+Niveles
+
+Un luchador comienza siempre en nivel 0.
+Cada nivel necesita $NIVEL * 150 puntos de experiencia para pasar al próximo.
+Es decir, para pasar a:
+
+    nivel 1: necesito (1 * 150 XP) = 150 XP => mi luchador tiene 150 XP
+    nivel 2: necesito (2 * 150 XP) = 300 XP => mi luchador tiene 450 XP
+    nivel 3: necesito (3 * 150 XP) = 450 XP => mi luchador tiene 900 XP
+    ... etc
+
+

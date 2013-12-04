@@ -1,11 +1,12 @@
 class Fighter
-    attr_accessor :name
 
-    def initialize(name)
+    attr_accessor :name, :abilities, :life, :points, :experience, :estrategyAttack, :estrategyDefense
+
+    def initialize(name, life, points)
         @name = name
         @abilities = []
-        @life = 0
-        @points = 0
+        @life = life
+        @points = points
         @experience = 0
         @estrategyAttack = []
         @estrategyDefense = []

@@ -5,8 +5,9 @@ class TestFighter < MiniTest::Unit::TestCase
   def setup
 
     param = {nameF: "exacto",
-             lifeF: 100,
-             pointsF: 40,
+             lifeF: 2,
+             pointsAF: 3,
+             pointsDF: 3,
              exp: 120
     }
 
@@ -15,18 +16,10 @@ class TestFighter < MiniTest::Unit::TestCase
   end
   def test_initialize
     assert_equal(@fighter1.name, 'exacto')
-    assert_equal(@fighter1.life, 100)
-    assert_equal(@fighter1.points, 40)
+    assert_equal(@fighter1.life, 2)
+    assert_equal(@fighter1.pointsA, 3)
+    assert_equal(@fighter1.pointsD, 3)
     assert_equal(@fighter1.experience, 120)
   end
 end
 
-=begin
-    @name = name
-    @abilities = []
-    @life = 0
-    @points = 0
-    @experience = 0
-    @estrategyAttack = []
-    @estrategyDefense = []
-=end

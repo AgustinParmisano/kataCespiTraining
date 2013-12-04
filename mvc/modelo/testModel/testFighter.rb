@@ -1,4 +1,10 @@
 require_relative '../fighters.rb'
+require 'test/unit'
 
-a = Fighter.new('pepe')
-p a 
+class TestFighter < MiniTest::Unit::TestCase
+    def test_simple
+        
+        a = Fighter.new("pepe")
+        assert_equal("pepe", a.name)
+    end
+end

@@ -1,4 +1,6 @@
 class Fighter
+    attr_accessor :name
+
     def initialize(name)
         @name = name
         @abilities = []

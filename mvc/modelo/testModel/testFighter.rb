@@ -3,8 +3,14 @@ require 'minitest/autorun'
 
 class TestFighter < MiniTest::Unit::TestCase
   def setup
-    @fighter1 = Fighter.new('neim', 'life', 'pointz')
-    @fighter2 = Fighter.new('neim2', 'life2', 'pointz2')
+
+    param = {nameF: 'neim',
+             lifeF: 'life',
+             pointsF: 'pointz'
+    }
+
+    @fighter1 = Fighter.new(param)
+    @fighter2 = Fighter.new(param)
   end
   def test_initialize
     assert_equal(@fighter1.name, 'neim')

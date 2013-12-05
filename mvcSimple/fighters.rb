@@ -9,31 +9,34 @@ class Fighter
 			setAttack attack
 			setLife life
 		else
-			raise
-		end	
-	end	
+      puts "C"
+			raise ArgumentError.new("Only numbers are allowed")
+		end
+	end
 
 	def setLife(life)
       if life >= 2
           @life = life
-      else 
-          raise
+      else
+          puts "A"
+          raise ArgumentError.new("2")
       end
     end
 
     def setDefense(defense)
       if defense >= 3
           @defense = defense
-      else 
-          raise
+      else
+          puts "B"
+          raise ArgumentError.new("3")
       end
     end
 
      def setAttack(attack)
       if attack >= 3
           @attack = attack
-      else 
-          raise
+      else
+          raise puts "D"
       end
     end
 
@@ -41,38 +44,38 @@ class Fighter
     	rounds.times{
     		attack(otherFighter)
     		defense(otherFighter)
-    	}    	
+    	}
     	if life > otherFighter.life
     		return self
     	elsif life < otherFighter.life
     			return otherFighter
-    	else		
+    	else
     		return :empate
     	end
-    end	
+    end
 
     def pointsAttack
     	return (@life+@attack)
     end
 
     def pointsDefense
-    	return (@life+@adefense)
+    	return (@life+@defense)
     end
 
     def substractLife(value)
     	@life -= value
-      end    
+      end
 
     def attack(otherFighter)
     	if pointsAttack > otherFighter.pointsDefense
     		otherFighter.substractLife(pointsAttack - otherFighter.pointsDefense)
-    	end	
+    	end
     end
 
     def defense(otherFighter)
     	if otherFighter.pointsAttack > pointsDefense
     		substractLife(otherFighter.pointsAttack - pointsDefense)
-    	end    	
+    	end
     end
 
-end	
+end

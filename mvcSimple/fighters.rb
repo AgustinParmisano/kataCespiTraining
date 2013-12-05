@@ -1,6 +1,6 @@
 class Fighter
 
-	attr_accessor :name :defense :attack :life
+	attr_accessor :name, :defense, :attack, :life
 
 	def initialize (name, defense, attack, life)
 		@name = name.to_s

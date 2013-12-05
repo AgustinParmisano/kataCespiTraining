@@ -3,17 +3,14 @@ class Fighter
     attr_accessor :name, :abilities, :life, :experience, :strategyAttack, :strategyDefense
 
     def initialize(params)
-        if params.size != 3 or !(params[:nameF].is_a? String) or !(params[:lifeF].is_a? Integer)
-          raise
-        else
-          @name = params[:nameF]
-          @abilities = []
-          life = params[:lifeF]
-          @experience = params[:exp]
+          @name = params[:nameF].to_s
+          life = 0
+          @experience = 0
           @strategyAttack = []
           @strategyDefense = []
           @abilitiesChosenD = []
           @abilitiesChosenA = []
+          @abilities = []
         end
     end
 
@@ -28,7 +25,7 @@ class Fighter
     # Cada player tiene N habilidades, de ellas elige
     # 3 habilidades de defensa y 3 de ataque
     def pickAbilityForDefense(ability)
-        if @abilitiesChosenD.length < 3
+        if @abilitiesChosenD.length < 3 && ability
             @abilitiesChosenD << ability
         else
             raise
@@ -36,14 +33,14 @@ class Fighter
     end
 
     def pickAbilityForAttack(ability)
-        if @abilitiesChosenA.length < 3
+        if @abilitiesChosenA.length < 3 && ability
             @abilitiesChosenA << ability
         else
             raise
         end
     end
 
-    # De las 6 habilidades que cada player posee (3A y 3D), debe armar
+    # De las 6 habilidades que cada player eligio (3A y 3D), debe armar
     # una secuencia de 5 ataques y 5 defensas
     def addToDefenseStrategy(ability)
         if @strategyDefense < 5
@@ -60,5 +57,36 @@ class Fighter
             raise
         end
     end
+
+    def addAbility(ability)
+        @abilities << ability
+    end
+
+    def giveMeNextAttack
+        unless @strategyAttack.is_empty?
+            @strategyAttack.shift
+        else
+            raise
+        end
+    end
+
+    def giveMeNextDefense
+        unless @strategyDefense.is_empty?
+            @strategyDefense.shift
+        else
+            raise
+        end
+    end
+
+    def isReady?
+        @strategyDefense.length == 5 &&
+        @strategyAttack.legnth == 5  &&
+        @life > 0
+    end
+        
+
+
+    def fightWith(anotherWarrior)
+        
 
 end

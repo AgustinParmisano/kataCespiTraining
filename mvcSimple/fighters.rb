@@ -42,7 +42,14 @@ class Fighter
     		attack(otherFighter)
     		defense(otherFighter)
     	}    	
-    end
+    	if life > otherFighter.life
+    		return self
+    	elsif life < otherFighter.life
+    			return otherFighter
+    	else		
+    		return :empate
+    	end
+    end	
 
     def pointsAttack
     	return (@life+@attack)
@@ -52,12 +59,20 @@ class Fighter
     	return (@life+@adefense)
     end
 
+    def substractLife(value)
+    	@life -= value
+      end    
+
     def attack(otherFighter)
-    	
+    	if pointsAttack > otherFighter.pointsDefense
+    		otherFighter.substractLife(pointsAttack - otherFighter.pointsDefense)
+    	end	
     end
 
     def defense(otherFighter)
-    	
+    	if otherFighter.pointsAttack > pointsDefense
+    		substractLife(otherFighter.pointsAttack - pointsDefense)
+    	end    	
     end
 
 end	

@@ -24,16 +24,16 @@ class Fighter
 
     # Cada player tiene N habilidades, de ellas elige
     # 3 habilidades de defensa y 3 de ataque
-    def pickAbilityForDefense(ability)
-        if @abilitiesChosenD.length < 3 && ability
+    def pick_ability_for_defense(ability)
+        if @abilitiesChosenD.length < 3 && !ability.is_nil?
             @abilitiesChosenD << ability
         else
             raise
         end
     end
 
-    def pickAbilityForAttack(ability)
-        if @abilitiesChosenA.length < 3 && ability
+    def pick_ability_for_attack(ability)
+        if @abilitiesChosenA.length < 3 && !ability.is_nil?
             @abilitiesChosenA << ability
         else
             raise
@@ -42,7 +42,7 @@ class Fighter
 
     # De las 6 habilidades que cada player eligio (3A y 3D), debe armar
     # una secuencia de 5 ataques y 5 defensas
-    def addToDefenseStrategy(ability)
+    def add_to_defense_strategy(ability)
         if @strategyDefense < 5
             @strategyDefense << ability
         else
@@ -50,7 +50,7 @@ class Fighter
         end
     end
 
-    def addToAttackStrategy(ability)
+    def add_to_attack_strategy(ability)
         if @strategyAttack.length < 5
             @strategyAttack << ability
         else
@@ -58,11 +58,11 @@ class Fighter
         end
     end
 
-    def addAbility(ability)
+    def add_ability(ability)
         @abilities << ability
     end
 
-    def giveMeNextAttack
+    def give_me_next_attack
         unless @strategyAttack.is_empty?
             @strategyAttack.shift
         else
@@ -70,7 +70,7 @@ class Fighter
         end
     end
 
-    def giveMeNextDefense
+    def give_me_next_defense
         unless @strategyDefense.is_empty?
             @strategyDefense.shift
         else
@@ -78,7 +78,7 @@ class Fighter
         end
     end
 
-    def isReady?
+    def is_ready?
         @strategyDefense.length == 5 &&
         @strategyAttack.legnth == 5  &&
         @life > 0
@@ -86,7 +86,7 @@ class Fighter
         
 
 
-    def fightWith(anotherWarrior)
-        
+    def fight_with(anotherWarrior)
+    end
 
 end

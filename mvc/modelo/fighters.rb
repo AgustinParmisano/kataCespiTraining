@@ -17,7 +17,7 @@ class Fighter
     def life=(life)
       if life >= 2
           @life = life
-      else 
+      else
           raise
       end
     end
@@ -83,10 +83,10 @@ class Fighter
         @strategyAttack.legnth == 5  &&
         @life > 0
     end
-        
+
 
 
     def fightWith(anotherWarrior)
-        
+
 
 end

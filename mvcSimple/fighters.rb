@@ -9,8 +9,7 @@ class Fighter
 			setAttack attack
 			setLife life
 		else
-      puts "C"
-			raise ArgumentError.new("Only numbers are allowed")
+      raise ArgumentError.new("Only numbers are allowed")
 		end
 	end
 
@@ -18,8 +17,7 @@ class Fighter
       if life >= 2
           @life = life
       else
-          puts "A"
-          raise ArgumentError.new("2")
+        raise ArgumentError.new("fighter die")
       end
     end
 
@@ -27,8 +25,7 @@ class Fighter
       if defense >= 3
           @defense = defense
       else
-          puts "B"
-          raise ArgumentError.new("3")
+        raise ArgumentError.new("point of defence greather than 3")
       end
     end
 
@@ -36,7 +33,7 @@ class Fighter
       if attack >= 3
           @attack = attack
       else
-          raise puts "D"
+          raise ArgumentError.new("point of attack greather than 3")
       end
     end
 
@@ -64,7 +61,7 @@ class Fighter
 
     def substractLife(value)
     	@life -= value
-      end
+    end
 
     def attack(otherFighter)
     	if pointsAttack > otherFighter.pointsDefense

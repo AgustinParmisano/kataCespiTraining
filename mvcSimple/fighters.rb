@@ -17,7 +17,7 @@ class Fighter
       if life >= 2
           @life = life
       else
-        raise ArgumentError.new("fighter die")
+        raise ArgumentError.new("Fighter die")
       end
     end
 
@@ -25,7 +25,7 @@ class Fighter
       if defense >= 3
           @defense = defense
       else
-        raise ArgumentError.new("point of defence greather than 3")
+        raise ArgumentError.new("Point of defence greather than 3")
       end
     end
 
@@ -33,7 +33,7 @@ class Fighter
       if attack >= 3
           @attack = attack
       else
-          raise ArgumentError.new("point of attack greather than 3")
+          raise ArgumentError.new("Point of attack greather than 3")
       end
     end
 
